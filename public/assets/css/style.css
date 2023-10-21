@@ -1,0 +1,91 @@
+.response-container {
+    border-radius: 4px;
+    background: #414141;
+    border: 1px solid #a4a4a4;
+    min-height: 100px;
+    margin-top: 40px;
+    color: #fff;
+    padding: 20px;
+    max-height: 280px;
+    overflow-y: auto;
+}
+.response-status-code{
+    color: #e40b3e;
+    font-size: 14px;
+}
+.response-status-text{
+    color: #414141;
+    font-size: 14px;
+}
+.ordered-list{
+    list-style-type: disc;
+    padding-inline-start: 40px;
+}
+
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 22px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.4s;
+    border-bottom: 1px solid #ccc;
+}
+
+.accordion > span {
+    padding: 6px;
+    border: 1px solid;
+    border-radius: 4px;
+    min-width: 90px;
+    display: inline-block;
+    text-align: center;
+    margin-right: 15px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.accordion > span.GET {
+    color: rgba(40, 95, 154, 1);
+}
+.accordion > span.POST {
+    color: green;
+}
+.accordion > span.PUT {
+    color: orange;
+}
+.accordion > span.DELETE {
+    color: red;
+}
+
+.active, .accordion:hover {
+    background-color: #ccc;
+}
+
+.accordion:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2212";
+}
+
+.accordion-panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.accordion-panel>h2:first-child{
+    margin-top: 40px;
+}
