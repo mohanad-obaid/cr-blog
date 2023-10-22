@@ -14,7 +14,56 @@ Before you begin, make sure you have the following prerequisites installed on yo
 - A web server (e.g., Apache, Nginx)
 - Command-line interface (Terminal, Command Prompt)
 
-## Getting Started
+## Method #1 : Run the Application dockerized using sail
+
+Laravel Sail is a light-weight command-line interface for interacting with Laravel's default Docker development environment. Sail provides a great starting point for building a Laravel application using PHP, MySQL, and Redis without requiring prior Docker experience.
+
+At its heart, Sail is the docker-compose.yml file and the sail script that is stored at the root of your project. The sail script provides a CLI with convenient methods for interacting with the Docker containers defined by the docker-compose.yml file.
+
+Laravel Sail is supported on macOS, Linux, and Windows
+
+```bash
+git clone https://github.com/mohanad-obaid/cr-blog.git
+```
+
+### Environment Setup
+Navigate to the root directory of the cloned Laravel app:
+```bash
+cd cr-blog
+```
+### Install Dependencies
+Install the project's PHP dependencies using Composer:
+```bash
+composer install
+```
+
+### run the application using sail
+Navigate to the root directory of the cloned Laravel app:
+```bash
+./vendor/bin/sail up
+```
+
+Run the database migrations on another command line tab to create the required tables:
+
+```bash
+./vendor/bin/sail artisan migrate
+```
+
+Run the command to create the symlink :
+
+```bash
+./vendor/bin/sail artisan storage:link
+```
+
+
+
+
+
+
+
+
+
+## Method #2 : the Application without docker
 
 ### Clone the Repository
 
