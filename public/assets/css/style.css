@@ -59,7 +59,7 @@
     color: orange;
 }
 .accordion > span.DELETE {
-    color: red;
+    color: #e40b3e;
 }
 
 .active, .accordion:hover {
@@ -88,4 +88,8 @@
 
 .accordion-panel>h2:first-child{
     margin-top: 40px;
+}
+.link{
+    color: #e40b3e;
+    
 }

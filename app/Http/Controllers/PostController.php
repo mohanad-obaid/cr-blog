@@ -20,7 +20,7 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $posts = Post::orderBy('updated_at', 'desc')->paginate(10); // Change 10 to the number of posts per page you desire.
+        $posts = Post::orderBy('updated_at', 'desc')->paginate(5); // Change 5 to the number of posts per page you desire.
 
         return response()->view('posts.index', compact('posts'));
     }
@@ -46,6 +46,9 @@ class PostController extends Controller
             $validated['featured_image'] = $filePath;
         }
 
+        //add user id to db record
+        $validated['user_id'] = $request->user()->id;
+        
         // insert only requests that already validated in the StoreRequest
         $create = Post::create($validated);
 
@@ -109,17 +112,22 @@ class PostController extends Controller
      */
     public function destroy(string $id): RedirectResponse
     {
-        $post = Post::findOrFail($id);
+        $post = Post::find($id);
 
         Storage::disk('public')->delete($post->featured_image);
         
-        $delete = $post->delete($id);
+        // Check if the post exists and if the current user ID matches the post's user ID
+        if($post && auth()->check() && auth()->user()->id === $post->user_id){
+            $delete = $post->delete($id);
 
-        if($delete) {
-            session()->flash('notif.success', 'Post deleted successfully!');
+            if($delete) {
+                session()->flash('notif.success', 'Post deleted successfully!');
+                return redirect()->route('posts.index');
+            }
+            return abort(500);
+        }else{
+            session()->flash('notif.error', 'You Can`t delete this post!');
             return redirect()->route('posts.index');
         }
-
-        return abort(500);
     }
 }

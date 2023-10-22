@@ -89,13 +89,7 @@ Run the command to create the symlink :
 ./vendor/bin/sail artisan storage:link
 ```
 
-
-
-
-
-
-
-
+Enjoy :)
 
 ## Method #2 : the Application without docker
 
@@ -118,7 +112,14 @@ Install the project's PHP dependencies using Composer:
 ```bash
 composer install
 ```
-
+Install the project's Node dependencies using npm:
+```bash
+npm install
+```
+do node build:
+```bash
+npm run build
+```
 ### Configuration
 Make a copy of the `.env.example` file and save it as `.env`:
 ```bash
@@ -140,11 +141,11 @@ Update the .env file with your database configuration details:
 
 ```bash
 DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
+DB_HOST=localhost
 DB_PORT=3306
-DB_DATABASE=your_database_name
-DB_USERNAME=your_database_username
-DB_PASSWORD=your_database_password
+DB_DATABASE=cr_blog
+DB_USERNAME=cr_user
+DB_PASSWORD=
 ```
 
 Run the database migrations to create the required tables:
@@ -164,3 +165,4 @@ This will start the application on `http://localhost:8000`.
 ### Access the Application
 Open your web browser and navigate to http://localhost:8000 to access Laravel blog application.
 
+Enjoy :)

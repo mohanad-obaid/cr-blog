@@ -36,6 +36,13 @@
                                     <span class="text-white">{{ Session::get('notif.success') }}</span>
                                 </div>
                                 @endif
+
+                                @if (Session::has('notif.error'))
+                                <div class="bg-red-500 mt-2 p-4">
+                                    {{-- if it's there then print the notification --}}
+                                    <span class="text-white">{{ Session::get('notif.error') }}</span>
+                                </div>
+                                @endif
                             </div>
                         </header>
                     @endif

@@ -20,23 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::post('login', function (Request $request) {
-//     $request->validate([
-//         'email' => 'required|email',
-//         'password' => 'required',
-//     ]);
-
-//     if (Auth::attempt($request->only('email', 'password'))) {
-//         $user = Auth::user();
-//         $token = $user->createToken('api-token')->plainTextToken;
-//         return response(['token' => $token], 200);
-//     }
-
-//     throw ValidationException::withMessages([
-//         'email' => ['The provided credentials are incorrect.'],
-//     ]);
-// });
-
 //Unprotected Routes
 Route::get('/posts', 'App\Http\Controllers\Api\PostController@index');
 Route::get('/post/{post}','App\Http\Controllers\Api\PostController@show');

@@ -63,6 +63,9 @@ class PostController extends Controller
             $validated['featured_image'] = $filePath;
         }
 
+        //add user id to db record
+        $validated['user_id'] = $request->user()->id;
+
         // insert only requests that already validated in the StoreRequest
         $create = Post::create($validated);
 
@@ -105,8 +108,8 @@ class PostController extends Controller
     public function destroy(string $id): JsonResponse
     {
         $post = Post::find($id);
-
-        if($post){
+        // Check if the post exists and if the current user ID matches the post's user ID
+        if($post && auth()->check() && auth()->user()->id === $post->user_id){
             //delete post image
             Storage::disk('public')->delete($post->featured_image);
         
@@ -117,8 +120,10 @@ class PostController extends Controller
             }
 
             return response()->json(['message' => 'Failed to delete the post'], 500);
+        }else if(!$post){
+            return response()->json(['message' => 'Post not found'], 404);
         }else{
-            return response()->json(['message' => 'Post not found'], 400);
+            return response()->json(['message' => 'You cant delete this post'], 403);
         }
     }
 }
