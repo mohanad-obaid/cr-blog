@@ -36,6 +36,40 @@ Install the project's PHP dependencies using Composer:
 ```bash
 composer install
 ```
+Install the project's Node dependencies using npm:
+```bash
+npm install
+```
+do node build:
+```bash
+npm run build
+```
+### Configuration
+Make a copy of the `.env.example` file and save it as `.env`:
+```bash
+cp .env.example .env
+```
+Edit the .env file and configure your application settings, including database connection details, app key, and any other environment-specific settings.
+
+Generate a new application key:
+
+```bash
+php artisan key:generate
+```
+
+### Database Setup
+Create a new database for your Laravel application in your database management system.
+
+Update the .env file with your database configuration details:
+
+```bash
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=cr_blog
+DB_USERNAME=sail
+DB_PASSWORD=password
+```
 
 ### run the application using sail
 Navigate to the root directory of the cloned Laravel app:
